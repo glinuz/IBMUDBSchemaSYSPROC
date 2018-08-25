@@ -13,4 +13,6 @@ git add sysproc.mon_get_connection\sysproc.mon_get_connection.sql
 
 git add sysproc.mon_get_database\sysproc.mon_get_database.sql
 
+git add sysproc.mon_get_bufferpool\sysproc.mon_get_bufferpool.sql
+
 git add git*.cmd
