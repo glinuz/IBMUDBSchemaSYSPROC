@@ -15,4 +15,6 @@ git add sysproc.mon_get_database\sysproc.mon_get_database.sql
 
 git add sysproc.mon_get_bufferpool\sysproc.mon_get_bufferpool.sql
 
+git add sysproc.mon_get_extended_latch_wait\sysproc.mon_get_extended_latch_wait.sql
+
 git add git*.cmd

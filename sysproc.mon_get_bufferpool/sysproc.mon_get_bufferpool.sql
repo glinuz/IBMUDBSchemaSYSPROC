@@ -35,25 +35,25 @@ WITH cteESR
 as
 (
 
-	SELECT 
-			  --tblBP.MEMBER
-			
-			  tblBP.BP_Name AS bufferPool
-			
-			, 
-			   pool_data_l_reads + pool_temp_data_l_reads +
+    SELECT 
+              --tblBP.MEMBER
+            
+              tblBP.BP_Name AS bufferPool
+            
+            , 
+               pool_data_l_reads + pool_temp_data_l_reads +
                pool_index_l_reads + pool_temp_index_l_reads +
                pool_xda_l_reads + pool_temp_xda_l_reads 
-            	as logicalReads
-            	
-    		,
-          	   pool_data_p_reads + pool_temp_data_p_reads 
-           	 + pool_index_p_reads + pool_temp_index_p_reads 
-           	 + pool_xda_p_reads + pool_temp_xda_p_reads 
-           	 	as physicalReads
+                as logicalReads
+                
+            ,
+               pool_data_p_reads + pool_temp_data_p_reads 
+             + pool_index_p_reads + pool_temp_index_p_reads 
+             + pool_xda_p_reads + pool_temp_xda_p_reads 
+                as physicalReads
            
 
-	FROM TABLE
+    FROM TABLE
         (
             sysproc.mon_get_bufferpool            
             ( 
@@ -75,24 +75,20 @@ SELECT
           cteESR.HOSTNAME AS "host"
           
         , tblEII.INST_NAME AS "instance"      
-        	
+            
         , cteBP.*
         
         , ( cteBP.LogicalReads * 100.00 )
-        	/ NULLIF
-        		(
-        			( cteBP.LogicalReads + cteBP.PhysicalReads)
-        			, 0
-        		)	
-    		AS "Hit Ratio"
-        		
+            / NULLIF
+                (
+                    ( cteBP.LogicalReads + cteBP.PhysicalReads)
+                    , 0
+                )   
+            AS "Hit Ratio"
+                
 FROM cteBufferPool cteBP
 
 CROSS JOIN cteESR
 
 CROSS JOIN sysibmadm.env_inst_info tblEII
 
-
-/*
-    FETCH FIRST 10 ROWS ONLY     
-*/
