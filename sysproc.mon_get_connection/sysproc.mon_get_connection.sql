@@ -37,7 +37,7 @@ SELECT
            cteESR.HOSTNAME AS "host"
           
         , tblEII.INST_NAME AS "instance"      
-	  
+      
         , tblMGC.SESSION_AUTH_ID AS "authIDSession"
 
         , tblMGC.SYSTEM_AUTH_ID AS "authIDSystem"
@@ -74,24 +74,24 @@ SELECT
         
         , tblMGC.rows_returned
         
-        	AS "rowsReturned"
+            AS "rowsReturned"
 
         , tblMGC.rows_read
         
-        	AS "rowsRead"
+            AS "rowsRead"
 
         , tblMGC.rows_modified
         
-        	AS "rowsModified"
-        	
+            AS "rowsModified"
+            
         , (
-        	  tblMGC.rows_deleted
-        	+ tblMGC.rows_inserted
-        	+ tblMGC.rows_updated
+              tblMGC.rows_deleted
+            + tblMGC.rows_inserted
+            + tblMGC.rows_updated
           )
           
-        	AS "rowsAffected"
-        	
+            AS "rowsAffected"
+            
         , tblMGC.*
         
 FROM TABLE
@@ -106,7 +106,8 @@ FROM TABLE
                 /* Specify -1 for the current database member, or -2 for all active database members */
                 , -2
                 
-                -- system_appls
+                -- user_appls = 0
+                -- system and user appls = 1
                 , 1
             )
             
@@ -120,18 +121,20 @@ CROSS JOIN sysibmadm.env_inst_info tblEII
 ORDER BY 
 
         (
-        	  tblMGC.POOL_INDEX_L_READS 
-        	+ tblMGC.POOL_INDEX_L_READS
-        	+ tblMGC.POOL_TEMP_DATA_L_READS
-        	+ tblMGC.POOL_TEMP_INDEX_L_READS
+              tblMGC.POOL_INDEX_L_READS 
+            + tblMGC.POOL_INDEX_L_READS
+            + tblMGC.POOL_TEMP_DATA_L_READS
+            + tblMGC.POOL_TEMP_INDEX_L_READS
 
-        	+ tblMGC.POOL_DATA_P_READS
-        	+ tblMGC.POOL_INDEX_P_READS
-        	
-    	) desc
+            + tblMGC.POOL_DATA_P_READS
+            + tblMGC.POOL_INDEX_P_READS
+            
+        ) desc
 
-		, (
-			tblMGC.rows_returned
-		  ) DESC
+        , (
+            tblMGC.rows_returned
+          ) DESC
 
-FETCH FIRST 10 ROWS ONLY     
+/*
+    FETCH FIRST 10 ROWS ONLY     
+*/
