@@ -19,4 +19,6 @@ git add sysproc.mon_get_extended_latch_wait\sysproc.mon_get_extended_latch_wait.
 
 git add sysproc.pd_get_diag_hist\sysproc.pd_get_diag_hist.sql
 
+git add sysproc.snap_get_tab_reorg\sysproc.snap_get_tab_reorg.sql
+
 git add git*.cmd
