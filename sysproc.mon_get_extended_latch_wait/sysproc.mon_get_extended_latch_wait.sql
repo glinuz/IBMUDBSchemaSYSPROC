@@ -77,3 +77,4 @@ CROSS JOIN sysibmadm.env_inst_info tblEII
 ORDER BY
 
         cteELW.TOTAL_EXTENDED_LATCH_WAIT_TIME DESC
+        
