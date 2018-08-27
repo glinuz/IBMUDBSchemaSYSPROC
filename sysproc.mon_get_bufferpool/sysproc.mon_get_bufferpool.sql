@@ -3,6 +3,11 @@
  *     https://www.ibm.com/support/knowledgecenter/hu/SSEPGG_9.7.0/com.ibm.db2.luw.sql.rtn.doc/doc/r0053942.html
 */
 
+/*
+
+db2 get snapshot for all bufferpools
+
+*/
 WITH cteESR
  (
     hostname
@@ -36,7 +41,8 @@ as
 (
 
     SELECT 
-              --tblBP.MEMBER
+    
+            --  tblBP.MEMBER
             
               tblBP.BP_Name AS bufferPool
             
@@ -59,7 +65,8 @@ as
             ( 
             
                 /* Buffer Pool */
-                null
+                --null
+                ''
                 
                 /* Specify -1 for the current database member, or -2 for all active database members */
                 , -2

@@ -81,7 +81,8 @@ SELECT
                 
             )
                 AS "TS"
-            
+
+       -- , CURRENT TIMEZONE AS "currentTimeZone"        
         , cteDH.MSG
         , cteDH.DUMPFILE
     --  , cteDH.*

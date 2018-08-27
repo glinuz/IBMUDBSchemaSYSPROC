@@ -21,4 +21,6 @@ git add sysproc.pd_get_diag_hist\sysproc.pd_get_diag_hist.sql
 
 git add sysproc.snap_get_tab_reorg\sysproc.snap_get_tab_reorg.sql
 
+git add sysproc.mon_get_table_usage_list\sysproc.mon_get_table_usage_list.sql
+
 git add git*.cmd
