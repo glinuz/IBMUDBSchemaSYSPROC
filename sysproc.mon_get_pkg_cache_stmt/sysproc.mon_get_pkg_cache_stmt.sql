@@ -53,7 +53,18 @@ SELECT
             + tblCS.ROWS_UPDATED
             
           )  AS "Rows Affected"
+
           
+        -- read  
+        , tblCS.POOL_READ_TIME AS "readPoolTime"
+          
+        , tblCS.DIRECT_READ_TIME AS "readDirectTime"
+          
+        -- writes  
+        , tblCS.POOL_WRITE_TIME AS "writePoolTime"
+          
+        , tblCS.DIRECT_WRITE_TIME AS "writeDirectTime"
+        
         -- , tblCS.POOL_DATA_P_READS AS "poolReadsPhysical"
         
         --, tblCS.POOL_DATA_L_READS AS "poolReadsLogical"
@@ -99,4 +110,4 @@ ORDER BY
         , ( tblCS.NUM_EXECUTIONS * tblCS.QUERY_COST_ESTIMATE ) DESC
 
         
--- FETCH FIRST 10 ROWS ONLY     
+FETCH FIRST 10 ROWS ONLY     

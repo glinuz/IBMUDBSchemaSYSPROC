@@ -1,4 +1,6 @@
 
+git add sysproc.admin_get_index_info\sysproc.admin_get_index_info.sql
+
 git add sysproc.admin_get_mem_usage\sysproc.admin_get_mem_usage.sql
 
 git add sysproc.snap_get_appl\sysproc.snap_get_appl.sql
